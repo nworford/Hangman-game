@@ -11,7 +11,7 @@ h1 {
 
 #hangman-header {
 	margin-top:5px;
-	height:200px;
+	width:93%;
 
 }
 
@@ -21,33 +21,73 @@ h1 {
 	top: 1px;
 }
 
-#page-left-starting-image {
-
-}
 
 #page-left {
 	border: 5px solid black;
 	width: 45%;
-	height: 60%;
+	height: 80%;
 	display: inline-block;
 	vertical-align: top;
+	margin-bottom:-5px;
 }
+
+.image-left {
+	width: 100%;
+	height: 100%;
+	display: inline-block;
+	vertical-align: top;
+	
+}
+
+#sound-button {
+
+	width:100px;
+	height:50px;
+	background-color:blue;
+}
+
 #page-right {
 	border: 5px solid black;
 	width: 45%;
-	height: 60%;
+	height:80%;
 	display: inline-block;
 	vertical-align: top;
+}
+
+#bottom-hr {
+	position:absolute;
+	width:100%;
+	height:10px;
+	background-color:black;
+	
+
 }
 
 #footer {
 	width:100%;
 	height:40px;
-	background-color:grey;
+	background-color:#5cd65c;
 	margin-top:10px;
 	text-align:center;
-	padding-top:20px;
+	padding-top:30px;
 	
 }
 
 
+/*@media screen and (max-width: 980px){
+
+ 
+}
+
+	
+}
+
+@media screen and (max-width: 760px){
+
+
+}
+
+
+
+@media screen and (max-width: 640px){
+  }*/

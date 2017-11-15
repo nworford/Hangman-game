@@ -83,12 +83,14 @@ document.onkeyup = function(event) {
 	if(puzzleSolved)
 	{
 		console.log("YOU WIN!");
+		//display flashcard Image
+		//display "play again" button
 	}
 	else
 	{
-		console.log("Game is not over yet!");
-	}
+		console.log("Game is not over yet!");}
 
+	
 }
 
 //theme:
@@ -96,10 +98,44 @@ document.onkeyup = function(event) {
 // possible options: play a youtube video, load a webpage in a new tab, display an image, play a song
 // reveal a hint/tip for something (i.e. chess could be the theme, and 'rook' revelas how a rook moves)
 
+
 var answers = ['bird', 'child','down','eye','horse','mouth','silk','tooth','up','water','woman'];
 
 var guesses = [];
+
+// if (foundGuess = false; guesses.appendChild.key)
 var answer = ['a', 'p', 'p', 'l', 'e'];
 var display = ['*', '*', '*', '*', '*'];
 
+// -----------------------------------------------------------------------
+
+// if player solves puzzle, ad 1 to win count
+var numberOfWins = 0;
+	if (puzzleSolved) {
+
+		numberOfWins = (numberOfwins + 1);
+
+		console.log(numberOfWins);
+
+	}
+// after each time player guesses, subtract 1 from remaining guesses remaining
+var guessesRemaining = 10;
+	
+	for (event.key) {
+		guessesRemaining = guessesRemaining -1};
+
+// after each time player guesses, record letter and add to already guessed list
+var lettersAlreadyGuessed = [];
+	
+	for (event.key) {
+		lettersAlreadyGuessed.appendChild
+	};
+
+// when only 3 guesses remaining, display hint image
+
+function () {
+	if( guessesRemaining >= 4; display.guessAwayImage);    //how to display guessAway or hint??
+
+	else ( display.hintImage);
+}
 

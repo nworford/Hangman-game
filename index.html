@@ -15,39 +15,88 @@
 
 		<header> <image id="hangman-header" src="assets/images/hangman-game-2.png" alt="Hangman Game"> </image>
 		</header>
-		<div id="answer">
-			<!-- <h1>TEST</h1>
-			(hint: "abcdef") -->
-		</div>
+		<!-- <div id="answer">
+			<h1>TEST</h1>
+			(hint: "abcdef")
+		</div> -->
 
 
 		<div id="page-left">
-			<image id="page-left-starting-image" src="assets/images/guess-away.png" alt="Hangman Game"> </image>
+			<image class="image-left" src="assets/images/guess-away.png" alt="Hangman Game"> </image>
 
 		</div>
 		<div id="page-right">
+			<h2> Use the keyboard to guess a letter! </h2>
+
+		
 			<h1 id="display">
 				_ _ _ _ _ _
 			</h1>
+
+				<div id="sound-button">
+					<h3> sound button </h3>
+					<audio controls src="assets/audio/sound.mp3" type="audio/mp3">
+					</audio>
+					<!-- <button onclick="PlaySound('sound')"> button1</button>
+
+					<script>
+					    function PlaySound(sound) {
+					        alert("On Press of "+bird);
+					        var path = "assets/audio/sound.mp3"
+					        var snd = new Audio("assets/audio/sound.mp3");
+					        snd.play();
+					    }
+					</script> -->
+
+
+				</div>
+
+			
 		</div>
 
-		<!-- <div class="flashcard-images">
-			<image src="assets/images/bird.png" alt="bird"> </image>
-			<image src="assets/images/child.png" alt="child"> </image>
-			<image src="assets/images/down.png" alt="down"> </image>
-			<image src="assets/images/eye.png" alt="eye"> </image>
-			<image src="assets/images/horse.png" alt="horse"> </image>
-			<image src="assets/images/mouth.png" alt="mouth"> </image>
-			<image src="assets/images/silk.png" alt="silk"> </image>
-			<image src="assets/images/tooth.png" alt="tooth"> </image>
-			<image src="assets/images/up.png" alt="up"> </image>
-			<image src="assets/images/water.png" alt="water"> </image>
-			<image src="assets/images/woman.png" alt="woman"> </image>
+		
+
+		<!-- <div>
+			<image class="image-left" src="assets/images/bird.png" alt="bird"> </image>
+			<image class="image-left" src="assets/images/child.png" alt="child"> </image>
+			<image class="image-left" src="assets/images/down.png" alt="down"> </image>
+			<image class="image-left" src="assets/images/eye.png" alt="eye"> </image>
+			<image class="image-left" src="assets/images/horse.png" alt="horse"> </image>
+			<image class="image-left" src="assets/images/mouth.png" alt="mouth"> </image>
+			<image class="image-left" src="assets/images/silk.png" alt="silk"> </image>
+			<image class="image-left" src="assets/images/tooth.png" alt="tooth"> </image>
+			<image class="image-left" src="assets/images/up.png" alt="up"> </image>
+			<image class="image-left" src="assets/images/water.png" alt="water"> </image>
+			<image class="image-left" src="assets/images/woman.png" alt="woman"> </image>
 		</div> -->
+
+		<!-- <div>
+			<image class="image-left" src="assets/images/bird-hint.png" alt="hint"> </image>
+			<image class="image-left" src="assets/images/child-hint.png" alt="hint"> </image>
+			<image class="image-left" src="assets/images/down-hint.png" alt="hint"> </image>
+			<image class="image-left" src="assets/images/eye-hint.png" alt="hint"> </image>
+			<image class="image-left" src="assets/images/horse-hint.png" alt="hint"> </image>
+			<image class="image-left" src="assets/images/mouth-hint.png" alt="hint"> </image>
+			<image class="image-left" src="assets/images/silk-hint.png" alt="hint"> </image>
+			<image class="image-left" src="assets/images/tooth-hint.png" alt="hint"> </image>
+			<image class="image-left" src="assets/images/up-hint.png" alt="hint"> </image>
+			<image class="image-left" src="assets/images/water-hint.png" alt="hint"> </image>
+			<image class="image-left" src="assets/images/woman-hint.png" alt="hint"> </image>
+		</div> -->
+
+		<div>
+			<audio>
+			  <source src="assets/audio/sound.mp3" type="audio/mp3">
+			</audio>
+		</div>
+
 
 	</body>
 
+	<hr id="bottom-hr">
 	<footer id="footer"> &copy Copyright 2017 Nathan L. Worford
 	</footer>
+
+
 
 </html>
