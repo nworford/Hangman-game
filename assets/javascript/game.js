@@ -96,7 +96,7 @@ document.onkeyup = function(event) {
 // possible options: play a youtube video, load a webpage in a new tab, display an image, play a song
 // reveal a hint/tip for something (i.e. chess could be the theme, and 'rook' revelas how a rook moves)
 
-var answers = ['Terminator', 'Vendetta'];
+var answers = ['bird', 'child','down','eye','horse','mouth','silk','tooth','up','water','woman'];
 
 var guesses = [];
 var answer = ['a', 'p', 'p', 'l', 'e'];
