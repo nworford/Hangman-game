@@ -15,17 +15,21 @@
 
 		<header> <image id="hangman-header" src="assets/images/hangman-game-2.png" alt="Hangman Game"> </image>
 		</header>
-		<!-- <div id="answer">
+		<div id="answer">
 			<h1>TEST</h1>
 			(hint: "abcdef")
-		</div> -->
+		</div>
 
 
 		<div id="page-left">
-			<image class="image-left" src="assets/images/horse.png" alt="Hangman Game"> </image>
+			<image class="image-left" src="assets/images/guess-away.png" alt="Hangman Game"> </image>
 
 		</div>
 		<div id="page-right">
+			Guesses Remaining: <span id="guesses">0</span>
+			Guesses Made: <span id="guessesMade">None</span>
+			Games Won: <span id="wins">0</span> <br>
+
 			<h2> Use the keyboard to guess a letter! </h2>
 
 		
@@ -33,23 +37,23 @@
 				_ _ _ _ _ _
 			</h1>
 
-				<div id="sound-button">
-					<h3> sound button </h3>
-					<audio controls src="assets/audio/sound.mp3" type="audio/mp3">
-					</audio>
-					<!-- <button onclick="PlaySound('sound')"> button1</button>
+			<div id="sound-button">
+				<h3> sound button </h3>
+				<audio controls src="assets/audio/sound.mp3" type="audio/mp3">
+				</audio>
+				<!-- <button onclick="PlaySound('sound')"> button1</button>
 
-					<script>
-					    function PlaySound(sound) {
-					        alert("On Press of "+bird);
-					        var path = "assets/audio/sound.mp3"
-					        var snd = new Audio("assets/audio/sound.mp3");
-					        snd.play();
-					    }
-					</script> -->
+				<script>
+				    function PlaySound(sound) {
+				        alert("On Press of "+bird);
+				        var path = "assets/audio/sound.mp3"
+				        var snd = new Audio("assets/audio/sound.mp3");
+				        snd.play();
+				    }
+				</script> -->
 
 
-				</div>
+			</div>
 
 			
 		</div>

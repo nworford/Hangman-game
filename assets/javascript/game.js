@@ -1,72 +1,70 @@
 
+
+var gameLost = false;
 var puzzleSolved = false;
+var numberOfWins = 0;
+var guessesRemaining = 7;
+//. O
+//./|\
+//. |
+// / \
+var answers = ['bird', 'child','down','eye','horse','mouth','silk','tooth','up','water','woman'];
+var guesses = [];
+// if (foundGuess = false; guesses.appendChild.key)
+var pickedWord = "";
+var answer = []; //list of letters forming correct answer: ['a', 'p', 'p', 'l', 'e']
+var display = []; //list of stars forming the unguessed letters : ['*', '*', '*', '*', '*']
 
 
-document.onkeyup = function(event) {
-	if(puzzleSolved)
-	{
-		alert("Press 'new game' to start over!");
-		return;
-	}
 
-	var userGuess = event.key;
+window.onload = function() {
+	//when the page first loads, initialize a game & update it
+	startGame(); //picks random word, fills in variables
+	updateGame(); //updates the screen
 
-	//see if that letter is in answer, if it is, copy to display & replace with *
-	//search through answer, find userGuess
-	//when found:
-	var foundMatch = false;
-	for(var i=0;i<answer.length;i++)
-	{
-		if(answer[i] == userGuess)
+	//any time a key is pressed
+	document.onkeyup = function(event) {
+		if(puzzleSolved || gameLost)
 		{
-			foundMatch = true;
-			display[i] = answer[i]; //copy the letter to display at tha tindex
-			answer[i] = '*'; //replace the answer at same index with a '*'		
+			alert("Starting a new game!");
+			startGame();
+			updateGame();
+			return;
 		}
-	}
-	if(foundMatch == false)
-	{
-		console.log("Penalty, 1 less move");
-	}
 
-
-	/*
-	puzzleSolved = false;
-	var filledLetters = 0;
-	for(var i=0;i<display.length;i++)
-	{
-		if(display[i] != '*')
+		//otherwise the puzzle is not solved
+		var userGuess = event.key;
+		console.log("GUESSED: " + userGuess);
+		//see if that letter is in answer, if it is, copy to display & replace with *
+		//search through answer, find userGuess
+		//when found:
+		var foundMatch = false;
+		for(var i=0;i<answer.length;i++)
 		{
-			filledLetters = filledLetters + 1;
+			if(answer[i] == userGuess)
+			{
+				foundMatch = true;
+				display[i] = answer[i]; //copy the letter to display at tha tindex
+				answer[i] = '*'; //replace the answer at same index with a '*'		
+			}
 		}
-	}
-	if(filledLetters == display.length)
-	{
-		puzzleSolved = true;
-	}
-	*/
-
-	// ----- UPDATE DISPLAY -----	
-	console.log(userGuess);
-	var pretty_display = "";
-	for(var i=0;i<display.length;i++)
-	{
-		if(display[i] == "*")
+		//if I didn't match any letters, i lose 1 guess
+		if(foundMatch == false)
 		{
-			pretty_display = pretty_display + "_ ";
+			guessesRemaining = guessesRemaining - 1;
+			console.log("Penalty, 1 less move: " + guessesRemaining);
 		}
-		else
-		{
-			pretty_display = pretty_display + display[i] + " "
-		}
+
+		// ----- UPDATE DISPLAY -----	
+		updateGame();
 	}
-	document.getElementById("answer").innerHTML = answer;
-	document.getElementById("display").innerHTML = pretty_display;
-	console.log("Answer: " + answer); //this is a secret
-	console.log("Display: " + pretty_display); //
+
+}
 
 
-
+//update all visual element based on current game state & trigger gameover if necessary
+var updateGame = function()
+{
 	// ----- CHECK FOR GAME OVER -----
 	// go through display and see if any *s remain.
 	// if any do, we repeat, if not we exit.
@@ -83,32 +81,89 @@ document.onkeyup = function(event) {
 	if(puzzleSolved)
 	{
 		console.log("YOU WIN!");
+		numberOfWins = numberOfWins + 1;
 		//display flashcard Image
 		//display "play again" button
 	}
 	else
 	{
-		console.log("Game is not over yet!");}
+		console.log("Game is not over yet!");
+		if( guessesRemaining >= 4)
+		{
+		 	//display.guessAwayImage;    //how to display guessAway or hint??
+		}
+		else if(guessesRemaining > 0)
+		{
+			//alter the display for a hint
+			console.log("Here's a hint: the answer is " + pickedWord);
+		}
+		else
+		{
+			console.log("YOU LOSER!");
+			gameLost = true;
+			for(var i=0;i<answer.length;i++)
+			{
+				if(answer[i] != '*')
+				{
+					foundMatch = true;
+					display[i] = answer[i]; //copy the letter to display at tha tindex
+					answer[i] = '*'; //replace the answer at same index with a '*'		
+				}
 
-	
+			}
+		}
+	}
+
+
+	//updating the guess & all text
+	var pretty_display = "";
+	for(var i=0;i<display.length;i++)
+	{
+		if(display[i] == "*")
+		{
+			pretty_display = pretty_display + "_ ";
+		}
+		else
+		{
+			pretty_display = pretty_display + display[i] + " "
+		}
+	}
+	document.getElementById("answer").innerHTML = answer;
+	document.getElementById("display").innerHTML = pretty_display;
+	console.log("Answer: " + answer); //this is a secret
+	console.log("Display: " + pretty_display); //
+	document.getElementById("guesses").innerHTML = guessesRemaining;
+	document.getElementById("wins").innerHTML = numberOfWins;
 }
+
+
+
 
 //theme:
 // each answer causes an event, what are the events?
 // possible options: play a youtube video, load a webpage in a new tab, display an image, play a song
 // reveal a hint/tip for something (i.e. chess could be the theme, and 'rook' revelas how a rook moves)
+var startGame = function() 
+{
+	gameLost = false;
+	puzzleSolved = false;
+	guesses = [];
+	pickedWord = answers[Math.floor(Math.random()*answers.length)]; //random word: "apple"
+	answer = [];
+	display = [];
+	guessesRemaining = 7;
+	for(var i=0;i<pickedWord.length;i++)
+	{
+		answer[i] = pickedWord[i];
+		display[i] = '*';
+	}
 
-
-var answers = ['bird', 'child','down','eye','horse','mouth','silk','tooth','up','water','woman'];
-
-var guesses = [];
-
-// if (foundGuess = false; guesses.appendChild.key)
-var answer = ['a', 'p', 'p', 'l', 'e'];
-var display = ['*', '*', '*', '*', '*'];
+	console.log(pickedWord);
+}
 
 // -----------------------------------------------------------------------
 
+/*
 // if player solves puzzle, ad 1 to win count
 var numberOfWins = 0;
 	if (puzzleSolved) {
@@ -118,11 +173,15 @@ var numberOfWins = 0;
 		console.log(numberOfWins);
 
 	}
+
+
+
 // after each time player guesses, subtract 1 from remaining guesses remaining
 var guessesRemaining = 10;
 	
 	for (event.key) {
-		guessesRemaining = guessesRemaining -1};
+		guessesRemaining = guessesRemaining -1
+	}
 
 // after each time player guesses, record letter and add to already guessed list
 var lettersAlreadyGuessed = [];
@@ -139,3 +198,4 @@ function () {
 	else ( display.hintImage);
 }
 
+*/
