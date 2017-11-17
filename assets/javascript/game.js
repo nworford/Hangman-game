@@ -22,6 +22,19 @@ window.onload = function() {
 	startGame(); //picks random word, fills in variables
 	updateGame(); //updates the screen
 
+
+	document.getElementById("current_flashcard").onclick = function() {
+		if(puzzleSolved == true)
+		{
+			document.getElementById("play_me").play();
+		}
+		else
+		{
+			document.getElementById("play_me").play();
+			alert("Solve the puzle first");
+		}
+	}
+
 	//any time a key is pressed
 	document.onkeyup = function(event) {
 		if(puzzleSolved || gameLost)
@@ -34,7 +47,26 @@ window.onload = function() {
 
 		//otherwise the puzzle is not solved
 		var userGuess = event.key;
+		if(userGuess < 'a' || userGuess > 'z')
+		{
+			//alert("IGNORING " + userGuess);
+			return;
+		}
+
 		console.log("GUESSED: " + userGuess);
+
+		if(display.indexOf(userGuess) != -1)
+		{
+			alert("You already guessed this!");
+			return;
+		}
+
+		if(guesses.indexOf(userGuess) != -1)
+		{
+			alert("You already guessed this!");
+			return;
+		}
+
 		//see if that letter is in answer, if it is, copy to display & replace with *
 		//search through answer, find userGuess
 		//when found:
@@ -48,11 +80,16 @@ window.onload = function() {
 				answer[i] = '*'; //replace the answer at same index with a '*'		
 			}
 		}
+
 		//if I didn't match any letters, i lose 1 guess
 		if(foundMatch == false)
 		{
 			guessesRemaining = guessesRemaining - 1;
 			console.log("Penalty, 1 less move: " + guessesRemaining);
+			guesses.push(userGuess);
+			document.getElementById("guessesMade").innerHTML = guesses;
+			//need hangman 6, 5, and 4 (but 3, 2, 1 are hint card)
+			//update the hangman image to "hangman_" + guessesRemaining + ".png"
 		}
 
 		// ----- UPDATE DISPLAY -----	
@@ -82,8 +119,15 @@ var updateGame = function()
 	{
 		console.log("YOU WIN!");
 		numberOfWins = numberOfWins + 1;
-		//display flashcard Image
+
+		//display flashcard Image & load sound
+		document.getElementById("current_flashcard").src = "assets/images/"+pickedWord+".png";
+		document.getElementById("play_me").src = "assets/audio/" + pickedWord + ".mp3";
+
 		//display "play again" button
+
+		//display the "you win" image
+		document.getElementById("win_box").innerHTML = '<img src="assets/images/you-win.png" width="100%">';
 	}
 	else
 	{
@@ -96,6 +140,7 @@ var updateGame = function()
 		{
 			//alter the display for a hint
 			console.log("Here's a hint: the answer is " + pickedWord);
+			document.getElementById("current_flashcard").src = "assets/images/"+pickedWord+"-hint.png";
 		}
 		else
 		{
@@ -152,6 +197,9 @@ var startGame = function()
 	answer = [];
 	display = [];
 	guessesRemaining = 7;
+	document.getElementById("win_box").innerHTML = '';
+	document.getElementById("current_flashcard").src = 'assets/images/guess-away.png';
+
 	for(var i=0;i<pickedWord.length;i++)
 	{
 		answer[i] = pickedWord[i];

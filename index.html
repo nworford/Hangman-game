@@ -22,13 +22,13 @@
 
 
 		<div id="page-left">
-			<image class="image-left" src="assets/images/guess-away.png" alt="Hangman Game"> </image>
-
+			<image id="current_flashcard" class="image-left" src="assets/images/guess-away.png" alt="Hangman Game"> </image>
 		</div>
+
 		<div id="page-right">
-			Guesses Remaining: <span id="guesses">0</span>
-			Guesses Made: <span id="guessesMade">None</span>
-			Games Won: <span id="wins">0</span> <br>
+			Guesses Remaining: <h1 id="guesses">0</h1><br>
+			Guesses Made: <h1 id="guessesMade">None</h1><br>
+			Games Won: <h1 id="wins">0</h1> <br>
 
 			<h2> Use the keyboard to guess a letter! </h2>
 
@@ -37,9 +37,12 @@
 				_ _ _ _ _ _
 			</h1>
 
+			<div id="win_box">
+			</div>
+
 			<div id="sound-button">
 				<h3> sound button </h3>
-				<audio controls src="assets/audio/woman.mp3" type="audio/mp3">
+				<audio controls id="play_me" src="assets/audio/woman.mp3" type="audio/mp3">
 				</audio>
 				<!-- <button onclick="PlaySound('sound')"> button1</button>
 
@@ -53,7 +56,7 @@
 				</script> -->
 
 
-			</div>
+			
 
 			
 		</div>
