@@ -121,7 +121,7 @@ var updateGame = function()
 		numberOfWins = numberOfWins + 1;
 
 		//display flashcard Image & load sound
-		document.getElementById("current_flashcard").src = "assets/images/"+pickedWord+".png";
+		document.getElementById("current_flashcard").src = "assets/images/"+pickedWord+ ".png";
 		document.getElementById("play_me").src = "assets/audio/" + pickedWord + ".mp3";
 
 		//display "play again" button
@@ -132,7 +132,20 @@ var updateGame = function()
 	else
 	{
 		console.log("Game is not over yet!");
-		if( guessesRemaining >= 4)
+		if (guessesRemaining == 6)
+		{ 
+			document.getElementById("current_flashcard").src = 'assets/images/wrong-1.png';
+		}
+
+		else if (guessesRemaining == 5)
+			{ 
+				document.getElementById("current_flashcard").src = 'assets/images/wrong-2.png';
+		}
+
+		else if (guessesRemaining == 4){ 
+			document.getElementById("current_flashcard").src = 'assets/images/wrong-3.png' ;
+		}
+		else if( guessesRemaining >= 4)
 		{
 		 	//display.guessAwayImage;    //how to display guessAway or hint??
 		}
@@ -142,10 +155,12 @@ var updateGame = function()
 			console.log("Here's a hint: the answer is " + pickedWord);
 			document.getElementById("current_flashcard").src = "assets/images/"+pickedWord+"-hint.png";
 		}
-		else
+		else  //less tan or equal to zeor
 		{
 			console.log("YOU LOSER!");
 			gameLost = true;
+
+			document.getElementById("current_flashcard").src = 'assets/images/you-lose.png' ;
 			for(var i=0;i<answer.length;i++)
 			{
 				if(answer[i] != '*')
@@ -211,6 +226,17 @@ var startGame = function()
 
 // -----------------------------------------------------------------------
 
+
+
+// }
+
+// if (guessesRemaining = 5){ document.getElementById("current_flashcard").src = 'assets/images/wrong-2.png';
+
+// }
+
+// if (guessesRemaining = 4){ document.getElementById("current_flashcard").src = 'assets/images/wrong-3.png' ;
+
+// }
 /*
 // if player solves puzzle, ad 1 to win count
 var numberOfWins = 0;
