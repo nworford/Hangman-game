@@ -120,6 +120,8 @@ var updateGame = function()
 		console.log("YOU WIN!");
 		numberOfWins = numberOfWins + 1;
 
+		
+
 		//display flashcard Image & load sound
 		document.getElementById("current_flashcard").src = "assets/images/"+pickedWord+ ".png";
 		document.getElementById("play_me").src = "assets/audio/" + pickedWord + ".mp3";
@@ -155,7 +157,7 @@ var updateGame = function()
 			console.log("Here's a hint: the answer is " + pickedWord);
 			document.getElementById("current_flashcard").src = "assets/images/"+pickedWord+"-hint.png";
 		}
-		else  //less tan or equal to zeor
+		else  //less than or equal to zero
 		{
 			console.log("YOU LOSER!");
 			gameLost = true;
@@ -190,7 +192,7 @@ var updateGame = function()
 	}
 	document.getElementById("answer").innerHTML = answer;
 	document.getElementById("display").innerHTML = pretty_display;
-	console.log("Answer: " + answer); //this is a secret
+	console.log("Answer: " + answer);
 	console.log("Display: " + pretty_display); //
 	document.getElementById("guesses").innerHTML = guessesRemaining;
 	document.getElementById("wins").innerHTML = numberOfWins;
@@ -199,16 +201,12 @@ var updateGame = function()
 
 
 
-//theme:
-// each answer causes an event, what are the events?
-// possible options: play a youtube video, load a webpage in a new tab, display an image, play a song
-// reveal a hint/tip for something (i.e. chess could be the theme, and 'rook' revelas how a rook moves)
 var startGame = function() 
 {
 	gameLost = false;
 	puzzleSolved = false;
 	guesses = [];
-	pickedWord = answers[Math.floor(Math.random()*answers.length)]; //random word: "apple"
+	pickedWord = answers[Math.floor(Math.random()*answers.length)]; 
 	answer = [];
 	display = [];
 	guessesRemaining = 7;
@@ -224,52 +222,3 @@ var startGame = function()
 	console.log(pickedWord);
 }
 
-// -----------------------------------------------------------------------
-
-
-
-// }
-
-// if (guessesRemaining = 5){ document.getElementById("current_flashcard").src = 'assets/images/wrong-2.png';
-
-// }
-
-// if (guessesRemaining = 4){ document.getElementById("current_flashcard").src = 'assets/images/wrong-3.png' ;
-
-// }
-/*
-// if player solves puzzle, ad 1 to win count
-var numberOfWins = 0;
-	if (puzzleSolved) {
-
-		numberOfWins = (numberOfwins + 1);
-
-		console.log(numberOfWins);
-
-	}
-
-
-
-// after each time player guesses, subtract 1 from remaining guesses remaining
-var guessesRemaining = 10;
-	
-	for (event.key) {
-		guessesRemaining = guessesRemaining -1
-	}
-
-// after each time player guesses, record letter and add to already guessed list
-var lettersAlreadyGuessed = [];
-	
-	for (event.key) {
-		lettersAlreadyGuessed.appendChild
-	};
-
-// when only 3 guesses remaining, display hint image
-
-function () {
-	if( guessesRemaining >= 4; display.guessAwayImage);    //how to display guessAway or hint??
-
-	else ( display.hintImage);
-}
-
-*/
