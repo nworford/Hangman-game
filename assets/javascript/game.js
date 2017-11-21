@@ -1,5 +1,4 @@
 
-
 var gameLost = false;
 var puzzleSolved = false;
 var numberOfWins = 0;
@@ -31,7 +30,7 @@ window.onload = function() {
 		else
 		{
 			document.getElementById("play_me").play();
-			alert("Solve the puzle first");
+			///alert("Solve the puzle first");
 		}
 	}
 
@@ -39,7 +38,7 @@ window.onload = function() {
 	document.onkeyup = function(event) {
 		if(puzzleSolved || gameLost)
 		{
-			alert("Starting a new game!");
+			//alert("Starting a new game!");
 			startGame();
 			updateGame();
 			return;
@@ -85,10 +84,9 @@ window.onload = function() {
 		if(foundMatch == false)
 		{
 			guessesRemaining = guessesRemaining - 1;
-			console.log("Penalty, 1 less move: " + guessesRemaining);
 			guesses.push(userGuess);
-			document.getElementById("guessesMade").innerHTML = guesses;
-			//need hangman 6, 5, and 4 (but 3, 2, 1 are hint card)
+			console.log("Penalty, 1 less move: " + guessesRemaining);
+			guesses			//need hangman 6, 5, and 4 (but 3, 2, 1 are hint card)
 			//update the hangman image to "hangman_" + guessesRemaining + ".png"
 		}
 
@@ -105,22 +103,23 @@ var updateGame = function()
 	// ----- CHECK FOR GAME OVER -----
 	// go through display and see if any *s remain.
 	// if any do, we repeat, if not we exit.
+	//assume the puzzle is solved
 	puzzleSolved = true;
 	//if number of moves remaining is 0, gameOver = true;
 
 	for(var i=0;i<display.length;i++)
 	{
-		if(display[i] == '*')
+		if(display[i] == '*') //find a single letter that proves otherwise
 		{
 			puzzleSolved = false;
 		}
 	}
-	if(puzzleSolved)
+	if(puzzleSolved) //if the puzzle is solved, hurrah
 	{
 		console.log("YOU WIN!");
 		numberOfWins = numberOfWins + 1;
 
-		
+
 
 		//display flashcard Image & load sound
 		document.getElementById("current_flashcard").src = "assets/images/"+pickedWord+ ".png";
@@ -133,17 +132,18 @@ var updateGame = function()
 	}
 	else
 	{
+		//heavy upgrade to what is being seen, mostly visual elements (not gameplay related)
+
+		//change hangman image
 		console.log("Game is not over yet!");
 		if (guessesRemaining == 6)
 		{ 
 			document.getElementById("current_flashcard").src = 'assets/images/wrong-1.png';
 		}
-
 		else if (guessesRemaining == 5)
-			{ 
+		{ 
 				document.getElementById("current_flashcard").src = 'assets/images/wrong-2.png';
 		}
-
 		else if (guessesRemaining == 4){ 
 			document.getElementById("current_flashcard").src = 'assets/images/wrong-3.png' ;
 		}
@@ -159,24 +159,28 @@ var updateGame = function()
 		}
 		else  //less than or equal to zero
 		{
+			//GAME IS OVER - copy all correct answers to display to show user
 			console.log("YOU LOSER!");
 			gameLost = true;
 
+			//you lose flashcard
 			document.getElementById("current_flashcard").src = 'assets/images/you-lose.png' ;
+
+			///OPTIONAL: lets show the answer what the user WOULD have been if they won
+			//go through the answer lookin for letters!
 			for(var i=0;i<answer.length;i++)
-			{
-				if(answer[i] != '*')
+			{ 
+				///copy all the correct letters the user failed to guess into the display section
+				if(answer[i] >= 'a' && answer[i] <= 'z') //anything letters left in answers
 				{
-					foundMatch = true;
 					display[i] = answer[i]; //copy the letter to display at tha tindex
 					answer[i] = '*'; //replace the answer at same index with a '*'		
 				}
-
 			}
 		}
 	}
 
-
+	//VISUAL CHANGES TO TEXT
 	//updating the guess & all text
 	var pretty_display = "";
 	for(var i=0;i<display.length;i++)
@@ -192,9 +196,20 @@ var updateGame = function()
 	}
 	document.getElementById("answer").innerHTML = answer;
 	document.getElementById("display").innerHTML = pretty_display;
+	document.getElementById("guessesMade").innerHTML = guesses;
 	console.log("Answer: " + answer);
 	console.log("Display: " + pretty_display); //
+	console.log("Guesses: " + guesses);
 	document.getElementById("guesses").innerHTML = guessesRemaining;
+	if(guesses.length == 0)
+	{
+		document.getElementById("guessesMade").innerHTML = "None";
+
+	}
+	else
+	{
+		document.getElementById("guesses").innerHTML = guessesRemaining;
+	}
 	document.getElementById("wins").innerHTML = numberOfWins;
 }
 
@@ -203,6 +218,7 @@ var updateGame = function()
 
 var startGame = function() 
 {
+	alert("STARTING GAME");
 	gameLost = false;
 	puzzleSolved = false;
 	guesses = [];
@@ -218,7 +234,6 @@ var startGame = function()
 		answer[i] = pickedWord[i];
 		display[i] = '*';
 	}
-
+	console.log("WORD IS READY");
 	console.log(pickedWord);
 }
-
