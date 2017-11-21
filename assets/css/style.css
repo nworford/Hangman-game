@@ -92,9 +92,15 @@ h1 {
 #instruction {
 	background-color:#5cd65c;
 	width:100%;
-	height:65px;
+	height:25%;
+	padding-top:2%;
+	padding-bottom: 2%;
 
 
+}
+
+#display {
+	width:100%;
 }
 
 /*@media screen and (max-width: 980px){
