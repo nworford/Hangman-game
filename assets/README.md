@@ -1,3 +1,5 @@
+
+
 ABOUT HANGMAN GAME:
 
 	Hangman Game, Mandarin Chinese Style is a JavaScript homework assignment. Instructions were as follows: 
@@ -15,8 +17,9 @@ ABOUT HANGMAN GAME:
 
 - After the user wins/loses, the game should automatically choose another word and make the user play it.
 
-In edition to the basic instructions, I chose to add “Bonuses” such as “Play a sound or song when the user guesses their word correctly”, and “Write some stylish CSS rules to make a design that fits your game's theme.”
+	In edition to the basic instructions, I chose to add “Bonuses” such as “Play a sound or song when the user guesses their word correctly”, and “Write some stylish CSS rules to make a design that fits your game's theme.”
 
+WIREFRAME:
 
 TECH USED: HTML, CSS, JavaScript
 
@@ -63,3 +66,12 @@ If neither of those things are true, it will check if the key which was pressed 
 
 CONCLUSION: 
 	This homework was really fun to create. I enjoyed working through the logic side of the game, as well as giving it the theme of Mandarin Chinese Characters. Although this assignment was only a month into the course, It is one of my favorites. 
+
+GRADE: A+
+
+INSTRUCTOR COMMENT:
+
+from David Hammond 
+November 29th, 6:38 pm
+
+Nathan, really fantastic work. You really covered all the logic needed here. I especially liked that you covered key validation and let the user know if they are pressing the same key twice. Lots of extras, looking good! Keep up the great work!
